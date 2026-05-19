@@ -12,7 +12,7 @@ Si prefieres otro formato de nombre, actualiza la función getLogoPath().
 const TOTAL = 54;
 
 function getLogoPath(n: number): string {
-  return `/images/logos/marca-${String(n).padStart(2, "0")}.png`;
+  return `/images/logos/${n}.png`;
 }
 
 function LogoCard({ n }: { n: number }) {
