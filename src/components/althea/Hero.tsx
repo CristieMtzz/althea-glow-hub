@@ -1,5 +1,5 @@
 import portada from "@/assets/portada.png";
-import { ArrowRight, Heart, ShieldCheck, PawPrint } from "lucide-react";
+import { ArrowRight, PawPrint } from "lucide-react";
 
 export function Hero({ onLogin }: { onLogin: () => void }) {
   return (
@@ -44,20 +44,6 @@ export function Hero({ onLogin }: { onLogin: () => void }) {
           <div className="relative">
             <div className="absolute -inset-6 bg-althea-gradient opacity-20 blur-3xl rounded-[3rem]" />
             <img src={portada} alt="Althea Pet Wellness & Rescue" className="relative w-full rounded-[2rem] shadow-althea object-cover" />
-            <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-althea px-4 py-3 flex items-center gap-3">
-              <div className="size-10 rounded-full bg-althea-gradient grid place-items-center text-white"><Heart className="size-5" /></div>
-              <div className="text-sm">
-                <div className="font-bold">Familia multiespecie</div>
-                <div className="text-muted-foreground text-xs">Perros, gatos, aves y más</div>
-              </div>
-            </div>
-            <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-althea px-4 py-3 hidden sm:flex items-center gap-3">
-              <div className="size-10 rounded-full bg-althea-gradient grid place-items-center text-white"><ShieldCheck className="size-5" /></div>
-              <div className="text-sm">
-                <div className="font-bold">Productos curados</div>
-                <div className="text-muted-foreground text-xs">Estándares reales</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
