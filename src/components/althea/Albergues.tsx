@@ -4,14 +4,30 @@ import { Camera } from "lucide-react";
 type AllySlot = {
   name: string;
   subtitle: string;
-  image?: string;
+  images?: string[];
 };
 
 const slots: AllySlot[] = [
   {
     name: "Dog Heart Foundation",
     subtitle: "Rescue dogs that rescue humans",
-    image: "/images/albergues/ALBERGUE1.jpeg",
+    images: [
+      "/images/albergues/ALBERGUE1.jpeg",
+      "/images/albergues/ALBERGUE1.jpg",
+      "/images/albergues/ALBERGUE1.png",
+      "/images/albergues/albergue1.jpeg",
+      "/images/albergues/albergue1.jpg",
+      "/images/albergues/albergue1.png",
+      "/images/albergues/dog-heart-foundation.jpeg",
+      "/images/albergues/dog-heart-foundation.jpg",
+      "/images/albergues/dog-heart-foundation.png",
+      "/images/ALBERGUE1.jpeg",
+      "/images/ALBERGUE1.jpg",
+      "/images/ALBERGUE1.png",
+      "/ALBERGUE1.jpeg",
+      "/ALBERGUE1.jpg",
+      "/ALBERGUE1.png",
+    ],
   },
   {
     name: "Refugio Esperanza Animal",
@@ -49,13 +65,26 @@ export function Albergues() {
             key={slot.name}
             className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-border bg-althea-gradient shadow-althea"
           >
-            {slot.image ? (
+            {slot.images?.length ? (
               <div className="absolute inset-0 grid place-items-center bg-black">
                 <img
-                  src={slot.image}
+                  src={slot.images[0]}
                   alt={slot.name}
                   className="w-full h-full object-contain object-center"
                   loading="lazy"
+                  data-fallback-index="0"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    const currentIndex = Number(img.dataset.fallbackIndex ?? "0");
+                    const nextIndex = currentIndex + 1;
+
+                    if (nextIndex < slot.images.length) {
+                      img.dataset.fallbackIndex = String(nextIndex);
+                      img.src = slot.images[nextIndex];
+                    } else {
+                      img.style.display = "none";
+                    }
+                  }}
                 />
               </div>
             ) : (
