@@ -38,8 +38,8 @@ export function Marcas() {
     <Section
       id="marcas"
       eyebrow="Marcas aliadas"
-      title=""
       intro="Productos seleccionados con criterio experto. Cada marca cumple nuestros estándares de calidad y compromiso."
+      centeredHeader
     >
       <div className="space-y-8 overflow-hidden">
         {[row1, row2].map((row, idx) => (
