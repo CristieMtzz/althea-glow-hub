@@ -11,7 +11,7 @@ const slots: AllySlot[] = [
   {
     name: "Dog Heart Foundation",
     subtitle: "Rescue dogs that rescue humans",
-    image: "/images/albergues/dog-heart-foundation.jpeg",
+    image: "/images/albergues/ALBERGUE1.jpeg",
   },
   {
     name: "Refugio Esperanza Animal",
@@ -50,12 +50,14 @@ export function Albergues() {
             className="group relative aspect-[4/3] rounded-3xl overflow-hidden border border-border bg-althea-gradient shadow-althea"
           >
             {slot.image ? (
-              <img
-                src={slot.image}
-                alt={slot.name}
-                className="absolute inset-0 w-full h-full object-cover object-center"
-                loading="lazy"
-              />
+              <div className="absolute inset-0 grid place-items-center bg-black">
+                <img
+                  src={slot.image}
+                  alt={slot.name}
+                  className="w-full h-full object-contain object-center"
+                  loading="lazy"
+                />
+              </div>
             ) : (
               <div className="absolute inset-0 grid place-items-center text-white/70">
                 <div className="flex flex-col items-center gap-2 text-center px-4">
@@ -65,7 +67,7 @@ export function Albergues() {
               </div>
             )}
 
-            <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+            <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
               <div className="text-white font-bold">{slot.name}</div>
               <div className="text-white/80 text-xs">{slot.subtitle}</div>
             </div>
