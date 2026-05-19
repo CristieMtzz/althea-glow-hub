@@ -1,12 +1,37 @@
 import { Section } from "./Section";
 
-const total = 54;
-const logos = Array.from({ length: total }, (_, i) => i + 1);
+/*
+Para mostrar los 54 logotipos reales:
+1. Sube las imágenes en orden del 1 al 54 a public/images/logos/
+   con los nombres marca-01.png, marca-02.png, ..., marca-54.png
+2. Automáticamente se mostrarán en el carrusel.
+
+Si prefieres otro formato de nombre, actualiza la función getLogoPath().
+*/
+
+const TOTAL = 54;
+
+function getLogoPath(n: number): string {
+  return `/images/logos/marca-${String(n).padStart(2, "0")}.png`;
+}
 
 function LogoCard({ n }: { n: number }) {
+  const path = getLogoPath(n);
   return (
-    <div className="shrink-0 w-40 h-24 mx-2 rounded-2xl bg-white border border-border shadow-sm grid place-items-center">
-      <div className="text-center">
+    <div className="shrink-0 w-40 h-24 mx-2 rounded-2xl bg-white border border-border shadow-sm grid place-items-center overflow-hidden p-3">
+      <img
+        src={path}
+        alt={`Marca ${n}`}
+        className="max-h-full max-w-full object-contain"
+        loading="lazy"
+        onError={(e) => {
+          // Si la imagen aún no existe, muestra placeholder
+          const t = e.currentTarget;
+          t.style.display = "none";
+          t.nextElementSibling?.classList.remove("hidden");
+        }}
+      />
+      <div className="hidden grid place-items-center w-full h-full text-center">
         <div className="text-xs uppercase tracking-widest text-muted-foreground">Marca</div>
         <div className="text-2xl font-extrabold text-althea-gradient">#{String(n).padStart(2, "0")}</div>
       </div>
@@ -15,6 +40,7 @@ function LogoCard({ n }: { n: number }) {
 }
 
 export function Marcas() {
+  const logos = Array.from({ length: TOTAL }, (_, i) => i + 1);
   const row1 = logos.slice(0, 27);
   const row2 = logos.slice(27);
 
@@ -33,8 +59,9 @@ export function Marcas() {
         ))}
       </div>
       <p className="text-xs text-muted-foreground mt-4">
-        Los logotipos numerados son marcadores de posición. Reemplázalos por las imágenes oficiales 1–54.
+        Sube las imágenes <code className="font-mono bg-secondary px-1 py-0.5 rounded">public/images/logos/marca-01.png … marca-54.png</code> para reemplazar los placeholders automáticamente.
       </p>
     </Section>
   );
 }
+
