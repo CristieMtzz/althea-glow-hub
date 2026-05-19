@@ -9,11 +9,11 @@ function getLogoPath(n: number): string {
 function LogoCard({ n }: { n: number }) {
   const path = getLogoPath(n);
   return (
-    <div className="shrink-0 w-52 sm:w-56 h-32 sm:h-36 mx-3 rounded-3xl bg-white border border-border shadow-sm grid place-items-center overflow-hidden p-4">
+    <div className="shrink-0 w-[260px] sm:w-[300px] h-[190px] sm:h-[220px] mx-3 rounded-3xl bg-white border border-border shadow-sm grid place-items-center p-2 sm:p-3">
       <img
         src={path}
         alt={`Marca ${n}`}
-        className="w-full h-full object-contain object-center block"
+        className="max-w-[94%] max-h-[94%] w-auto h-auto object-contain object-center block"
         loading="lazy"
         onError={(e) => {
           const t = e.currentTarget;
@@ -41,10 +41,10 @@ export function Marcas() {
       title=""
       intro="Productos seleccionados con criterio experto. Cada marca cumple nuestros estándares de calidad y compromiso."
     >
-      <div className="space-y-7 overflow-hidden">
+      <div className="space-y-8 overflow-hidden">
         {[row1, row2].map((row, idx) => (
-          <div key={idx} className="relative overflow-hidden">
-            <div className="flex marquee" style={{ animationDirection: idx % 2 ? "reverse" : "normal" }}>
+          <div key={idx} className="relative overflow-hidden py-2">
+            <div className="flex marquee items-center" style={{ animationDirection: idx % 2 ? "reverse" : "normal" }}>
               {[...row, ...row].map((n, i) => (
                 <LogoCard key={`${idx}-${i}-${n}`} n={n} />
               ))}
