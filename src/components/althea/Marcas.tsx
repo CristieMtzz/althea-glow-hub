@@ -3,7 +3,7 @@ import { Section } from "./Section";
 /*
 Para mostrar los 54 logotipos reales:
 1. Sube las imágenes en orden del 1 al 54 a public/images/logos/
-   con los nombres marca-01.png, marca-02.png, ..., marca-54.png
+   con los nombres 1.png, 2.png, ..., 54.png
 2. Automáticamente se mostrarán en el carrusel.
 
 Si prefieres otro formato de nombre, actualiza la función getLogoPath().
@@ -59,7 +59,7 @@ export function Marcas() {
         ))}
       </div>
       <p className="text-xs text-muted-foreground mt-4">
-        Sube las imágenes <code className="font-mono bg-secondary px-1 py-0.5 rounded">public/images/logos/marca-01.png … marca-54.png</code> para reemplazar los placeholders automáticamente.
+        Sube las imágenes <code className="font-mono bg-secondary px-1 py-0.5 rounded">public/images/logos/1.png … 54.png</code> para reemplazar los placeholders automáticamente.
       </p>
     </Section>
   );
